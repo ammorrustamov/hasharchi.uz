@@ -29,6 +29,7 @@ export function LanguageProvider({ children }) {
 
   useEffect(() => {
     document.documentElement.lang = language === 'ru' ? 'ru' : 'uz';
+    document.documentElement.setAttribute('data-lang', language);
   }, [language]);
 
   return (

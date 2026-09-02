@@ -1,14 +1,18 @@
 import { Download, FileText, MessageCircle, UserPlus, CreditCard, Briefcase } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import ScrollReveal from './ScrollReveal';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
+
+const MotionDiv = m.div;
 
 const clientIcons = [Download, FileText, MessageCircle];
 const workerIcons = [UserPlus, CreditCard, Briefcase];
 
 function StepCard({ number, icon: Icon, text, delay }) {
+  const StepIcon = Icon;
+
   return (
-    <motion.div
+    <MotionDiv
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-30px' }}
@@ -17,22 +21,22 @@ function StepCard({ number, icon: Icon, text, delay }) {
     >
       {/* Step number + icon */}
       <div className="flex flex-col items-center shrink-0">
-        <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500 dark:bg-brand-600 text-white font-bold text-lg shadow-md shadow-brand-500/30">
+        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-500 text-white font-bold">
           {number}
         </div>
         {number < 3 && (
-          <div className="w-0.5 h-8 mt-2 bg-gradient-to-b from-brand-400 to-transparent dark:from-brand-600" />
+          <div className="w-0.5 h-8 mt-2 bg-brand-500" />
         )}
       </div>
 
       {/* Text */}
       <div className="pt-2.5">
         <div className="flex items-center gap-2">
-          <Icon className="w-4 h-4 text-brand-500 dark:text-brand-400 shrink-0" />
-          <p className="text-slate-800 dark:text-slate-200 font-medium">{text}</p>
+          <StepIcon className="w-4 h-4 text-brand-500 shrink-0" />
+          <p className="text-brand-500 dark:text-[#D7E6F0] font-medium">{text}</p>
         </div>
       </div>
-    </motion.div>
+    </MotionDiv>
   );
 }
 
@@ -52,11 +56,11 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="how-it-works" className="py-20 md:py-28 bg-slate-50 dark:bg-slate-800/50">
+    <section id="how-it-works" className="py-16 md:py-20 bg-white text-brand-500 dark:bg-[#071827]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal variant="fadeUp">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="inline-block text-sm font-semibold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-4">
+            <span className="inline-block text-sm font-semibold tracking-widest uppercase text-brand-500 mb-4">
               How it works
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white">
@@ -68,12 +72,12 @@ export default function HowItWorks() {
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Clients */}
           <ScrollReveal variant="slideRight">
-            <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 shadow-sm h-full">
+            <div className="bg-[#F9FAFB] dark:bg-[#102A43] rounded-xl p-8 shadow-md dark:shadow-black/20 border-t-4 border-brand-500 dark:border-[#0EA5E9] h-full">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-900/40 flex items-center justify-center">
-                  <Briefcase className="w-5 h-5 text-brand-600 dark:text-brand-400" />
+                <div className="w-10 h-10 rounded-lg bg-brand-500/10 dark:bg-[#0EA5E9]/15 flex items-center justify-center">
+                  <Briefcase className="w-5 h-5 text-brand-500" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                <h3 className="text-xl font-bold text-brand-500 dark:text-white">
                   {t('how_clients')}
                 </h3>
               </div>
@@ -93,12 +97,12 @@ export default function HowItWorks() {
 
           {/* Workers */}
           <ScrollReveal variant="slideLeft">
-            <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 shadow-sm h-full">
+            <div className="bg-[#F9FAFB] dark:bg-[#102A43] rounded-xl p-8 shadow-md dark:shadow-black/20 border-t-4 border-brand-500 dark:border-[#0EA5E9] h-full">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/40 flex items-center justify-center">
-                  <UserPlus className="w-5 h-5 text-accent-600 dark:text-accent-400" />
+                <div className="w-10 h-10 rounded-lg bg-brand-500/10 dark:bg-[#0EA5E9]/15 flex items-center justify-center">
+                  <UserPlus className="w-5 h-5 text-brand-500" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                <h3 className="text-xl font-bold text-brand-500 dark:text-white">
                   {t('how_workers')}
                 </h3>
               </div>

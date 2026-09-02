@@ -7,7 +7,7 @@ export default function ImportantBanner() {
 
   return (
     <ScrollReveal variant="fadeIn">
-      <section className="relative py-6 bg-gradient-to-r from-red-500 via-red-600 to-red-500 dark:from-red-900/80 dark:via-red-800/80 dark:to-red-900/80">
+      <section className="relative py-6 bg-[#FF3B30] dark:bg-[#7F1D1D]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex items-center justify-center gap-3">
             <AlertTriangle className="w-6 h-6 text-white shrink-0" />

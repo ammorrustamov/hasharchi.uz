@@ -1,7 +1,9 @@
 import { Send, Headphones } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import ScrollReveal from './ScrollReveal';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
+
+const MotionLink = m.a;
 
 // Instagram icon (custom SVG)
 function InstagramIcon({ className }) {
@@ -29,36 +31,36 @@ const contacts = [
     Icon: Send,
     labelKey: 'contact_tg_channel',
     label: null,
-    color: 'text-sky-500 dark:text-sky-400',
-    bg: 'bg-sky-50 dark:bg-sky-900/20',
-    hover: 'hover:bg-sky-100 dark:hover:bg-sky-900/40',
+    color: 'text-white',
+    bg: 'bg-white/10',
+    hover: 'hover:bg-white/10',
   },
   {
     href: 'https://t.me/hasharchiadmin',
     Icon: Headphones,
     labelKey: 'contact_support',
     label: null,
-    color: 'text-brand-500 dark:text-brand-400',
-    bg: 'bg-brand-50 dark:bg-brand-900/20',
-    hover: 'hover:bg-brand-100 dark:hover:bg-brand-900/40',
+    color: 'text-white',
+    bg: 'bg-white/10',
+    hover: 'hover:bg-white/10',
   },
   {
     href: 'https://www.instagram.com/hasharchi',
     Icon: InstagramIcon,
     labelKey: null,
     label: 'Instagram',
-    color: 'text-pink-500 dark:text-pink-400',
-    bg: 'bg-pink-50 dark:bg-pink-900/20',
-    hover: 'hover:bg-pink-100 dark:hover:bg-pink-900/40',
+    color: 'text-white',
+    bg: 'bg-white/10',
+    hover: 'hover:bg-white/10',
   },
   {
     href: 'https://www.youtube.com/@hasharchi',
     Icon: YoutubeIcon,
     labelKey: null,
     label: 'YouTube',
-    color: 'text-red-500 dark:text-red-400',
-    bg: 'bg-red-50 dark:bg-red-900/20',
-    hover: 'hover:bg-red-100 dark:hover:bg-red-900/40',
+    color: 'text-white',
+    bg: 'bg-white/10',
+    hover: 'hover:bg-white/10',
   },
 ];
 
@@ -66,57 +68,57 @@ export default function AboutContact() {
   const { t } = useLanguage();
 
   return (
-    <section id="about" className="py-20 md:py-28 bg-white dark:bg-slate-900">
+    <section id="about" className="py-10 md:py-14 bg-brand-500 text-white dark:bg-[#0B2235]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* About */}
           <ScrollReveal variant="slideRight">
             <div>
-              <span className="inline-block text-sm font-semibold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-4">
+              <span className="inline-block text-sm font-semibold tracking-widest uppercase text-white mb-4">
                 About
               </span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-6 leading-tight">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4 leading-tight">
                 {t('about_title')}
               </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+              <p className="text-base md:text-lg text-white/90 leading-relaxed">
                 {t('about_text')}
               </p>
-              <div className="mt-8 w-16 h-1 rounded-full bg-gradient-to-r from-brand-400 to-accent-500" />
+              <div className="mt-8 w-16 h-1 rounded-full bg-white" />
             </div>
           </ScrollReveal>
 
           {/* Contact */}
           <ScrollReveal variant="slideLeft">
             <div id="contact">
-              <span className="inline-block text-sm font-semibold tracking-widest uppercase text-brand-600 dark:text-brand-400 mb-4">
+              <span className="inline-block text-sm font-semibold tracking-widest uppercase text-white mb-4">
                 Contact
               </span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-8 leading-tight">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-5 leading-tight">
                 {t('contact_title')}
               </h2>
               <div className="space-y-3">
                 {contacts.map((contact, i) => {
                   const label = contact.labelKey ? t(contact.labelKey) : contact.label;
                   return (
-                    <motion.a
+                    <MotionLink
                       key={i}
                       href={contact.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ x: 4 }}
                       transition={{ duration: 0.2 }}
-                      className={`flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-700 ${contact.hover} transition-all group`}
+                      className={`flex items-center gap-3 p-3 rounded-xl border border-white/20 ${contact.hover} transition-all group`}
                     >
-                      <div className={`flex items-center justify-center w-11 h-11 rounded-lg ${contact.bg}`}>
+                      <div className={`flex items-center justify-center w-10 h-10 rounded-lg ${contact.bg}`}>
                         <contact.Icon className={`w-5 h-5 ${contact.color}`} />
                       </div>
-                      <span className="font-semibold text-slate-800 dark:text-slate-200 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                      <span className="font-semibold text-white group-hover:text-white transition-colors">
                         {label}
                       </span>
-                      <svg className="w-4 h-4 text-slate-400 dark:text-slate-500 ml-auto group-hover:text-brand-500 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <svg className="w-4 h-4 text-white/70 ml-auto group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M5 12h14M12 5l7 7-7 7" />
                       </svg>
-                    </motion.a>
+                    </MotionLink>
                   );
                 })}
               </div>

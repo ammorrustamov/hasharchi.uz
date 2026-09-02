@@ -5,19 +5,30 @@
    ═══════════════════════════════════════════════ */
 @variant dark (&:where(.dark, .dark *));
 
+:root {
+  --hasharchi-blue: #0ea5e9;
+  --hasharchi-dark-blue: #0284c7;
+  --dark-page: #071827;
+  --dark-section: #0b2235;
+  --dark-card: #102a43;
+  --dark-card-hover: #163e5f;
+  --dark-border: #1f4a67;
+  --dark-muted: #a8c0d1;
+}
+
 /* ═══════════════════════════════════════════════
    CUSTOM THEME (Tailwind v4 CSS-first config)
    ═══════════════════════════════════════════════ */
 @theme {
-  --color-brand-50: #f0f9ff;
-  --color-brand-100: #e0f2fe;
-  --color-brand-200: #bae6fd;
+  --color-brand-50: #f9fafb;
+  --color-brand-100: #f9fafb;
+  --color-brand-200: #e5e7eb;
   --color-brand-300: #7dd3fc;
-  --color-brand-400: #38bdf8;
+  --color-brand-400: #0ea5e9;
   --color-brand-500: #0ea5e9;
   --color-brand-600: #0284c7;
   --color-brand-700: #0369a1;
-  --color-brand-800: #075985;
+  --color-brand-800: #0284c7;
   --color-brand-900: #0c4a6e;
 
   --color-accent-400: #818cf8;
@@ -27,7 +38,7 @@
   --color-danger-500: #ef4444;
   --color-danger-600: #dc2626;
 
-  --font-family-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-sans: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
   --animate-fade-up: fade-up 0.6s ease-out both;
   --animate-fade-in: fade-in 0.5s ease-out both;
@@ -58,11 +69,11 @@ html {
 
 body {
   font-family: var(--font-family-sans);
-  background-color: #ffffff;
-  color: #0f172a;
+  background-color: #0ea5e9;
+  color: #ffffff;
   line-height: 1.7;
   overflow-x: hidden;
-  background-image: radial-gradient(circle at top, rgba(14, 165, 233, 0.08), transparent 32%), linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  background-image: none;
 }
 
 .dark html {
@@ -70,23 +81,14 @@ body {
 }
 
 .dark body {
-  background-color: #020817;
-  background-image:
-    radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 28%),
-    radial-gradient(circle at top right, rgba(168, 85, 247, 0.15), transparent 32%),
-    radial-gradient(circle at bottom center, rgba(14, 165, 233, 0.12), transparent 30%),
-    linear-gradient(180deg, #020817 0%, #0f172a 28%, #111827 100%);
-  color: #f1f5f9;
+  background-color: var(--dark-page);
+  background-image: none;
+  color: #f8fafc;
   background-attachment: fixed;
 }
 
 body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.04), rgba(168, 85, 247, 0.04), rgba(16, 185, 129, 0.03));
-  z-index: -1;
+  content: none;
 }
 
 /* ═══════════════════════════════════════════════
@@ -110,11 +112,11 @@ body::before {
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: #0b2235;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #475569;
+  background: #38627d;
 }
 
 /* ═══════════════════════════════════════════════
@@ -177,6 +179,28 @@ body::before {
 @keyframes pulse-soft {
   0%, 100% { opacity: 0.4; }
   50% { opacity: 0.7; }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transition: opacity var(--reveal-duration, 0.6s) ease,
+    transform var(--reveal-duration, 0.6s) cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition-delay: var(--reveal-delay, 0s);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-fadeUp { transform: translateY(40px); }
+.scroll-reveal-scaleIn { transform: scale(0.9); }
+.scroll-reveal-slideRight { transform: translateX(-40px); }
+.scroll-reveal-slideLeft { transform: translateX(40px); }
+.scroll-reveal-fadeIn,
+.scroll-reveal.is-visible {
+  transform: none;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  will-change: auto;
 }
 
 /* ═══════════════════════════════════════════════

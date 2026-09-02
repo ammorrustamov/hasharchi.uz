@@ -1,3 +1,4 @@
+import { createElement } from 'react';
 import { Send } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -21,6 +22,10 @@ function YoutubeIcon({ className }) {
   );
 }
 
+function SocialIcon({ icon: Icon }) {
+  return createElement(Icon, { className: 'w-4 h-4' });
+}
+
 const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=uz.developer.hasharchi';
 const APP_STORE_URL = 'https://apps.apple.com/uz/app/hasharchi/id6755495405';
 
@@ -34,16 +39,16 @@ export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-slate-900 dark:bg-slate-950 text-slate-400">
+    <footer className="bg-[#0284C7] dark:bg-[#071827] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main footer grid */}
-        <div className="py-12 md:py-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 border-b border-slate-800">
+        <div className="py-12 md:py-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 border-b border-white/20 dark:border-[#1F4A67]">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="text-2xl font-extrabold text-white tracking-tight mb-3">
               HASHARCHI
             </div>
-            <p className="text-sm text-slate-500 leading-relaxed mb-5 max-w-xs">
+            <p className="text-sm text-white/80 dark:text-[#A8C0D1] leading-relaxed mb-5 max-w-xs">
               {t('about_text').split('.')[0] + '.'}
             </p>
             <div className="flex items-center gap-3">
@@ -54,9 +59,9 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex items-center justify-center w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-600 text-slate-400 hover:text-white transition-all"
+                  className="flex items-center justify-center w-9 h-9 rounded-lg bg-white/10 hover:bg-[#1F2937] text-white/80 hover:text-white transition-all"
                 >
-                  <Icon className="w-4 h-4" />
+                  <SocialIcon icon={Icon} />
                 </a>
               ))}
             </div>
@@ -64,7 +69,7 @@ export default function Footer() {
 
           {/* App download */}
           <div>
-            <h3 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-white/90 uppercase tracking-wider mb-4">
               {t('nav_download')}
             </h3>
             <div className="space-y-3">
@@ -72,9 +77,9 @@ export default function Footer() {
                 href={GOOGLE_PLAY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-sm text-slate-400 hover:text-white transition-colors group"
+                  className="flex items-center gap-2.5 text-sm text-white/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 rounded-sm transition-colors group"
               >
-                <svg className="w-4 h-4 shrink-0 text-brand-400 group-hover:text-brand-300" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="w-4 h-4 shrink-0 text-white group-hover:text-white" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.12 12l2.578-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/>
                 </svg>
                 Google Play
@@ -83,9 +88,9 @@ export default function Footer() {
                 href={APP_STORE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-sm text-slate-400 hover:text-white transition-colors group"
+                className="flex items-center gap-2.5 text-sm text-white/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 rounded-sm transition-colors group"
               >
-                <svg className="w-4 h-4 shrink-0 text-slate-300 group-hover:text-white" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="w-4 h-4 shrink-0 text-white/80 group-hover:text-white" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                 </svg>
                 App Store
@@ -94,9 +99,9 @@ export default function Footer() {
           </div>
 
           {/* Navigation */}
-          <div>
-            <h3 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-4">
-              Navigation
+          <nav aria-label={t('footer_navigation')}>
+            <h3 className="text-sm font-semibold text-white/90 uppercase tracking-wider mb-4">
+              {t('footer_navigation')}
             </h3>
             <ul className="space-y-2.5 text-sm">
               {[
@@ -106,45 +111,45 @@ export default function Footer() {
                 { key: 'nav_about', href: '#about' },
               ].map(({ key, href }) => (
                 <li key={key}>
-                  <a href={href} className="text-slate-400 hover:text-white transition-colors">
+                  <a href={href} className="text-white/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 rounded-sm transition-colors">
                     {t(key)}
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Legal */}
-          <div>
+          <nav aria-label={t('footer_legal')}>
             <h3 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-4">
-              Legal
+              {t('footer_legal')}
             </h3>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">
+                <a href="#" className="text-white/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 rounded-sm transition-colors">
                   {t('footer_policy')}
                 </a>
               </li>
               <li>
-                <a href="#" className="text-slate-400 hover:text-white transition-colors">
+                <a href="#" className="text-white/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 rounded-sm transition-colors">
                   {t('footer_terms')}
                 </a>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
 
         {/* Bottom bar */}
         <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
-          <p className="text-slate-500">
+          <p className="text-white">
             © 2026 HASHARCHI. {t('footer_rights')}
           </p>
           <div className="flex items-center gap-4">
-            <a href="#" className="text-slate-500 hover:text-white transition-colors text-xs">
+            <a href="#" className="text-white/65 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 rounded-sm transition-colors text-xs">
               {t('footer_policy')}
             </a>
-            <span className="text-slate-700">·</span>
-            <a href="#" className="text-slate-500 hover:text-white transition-colors text-xs">
+            <span className="text-white/65">·</span>
+            <a href="#" className="text-white/65 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 rounded-sm transition-colors text-xs">
               {t('footer_terms')}
             </a>
           </div>

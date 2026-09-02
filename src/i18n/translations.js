@@ -68,6 +68,8 @@ const translations = {
 
     // Footer
     footer_rights: "Все права защищены.",
+    footer_navigation: "Навигация",
+    footer_legal: "Правовая информация",
     footer_policy: "Политика конфиденциальности",
     footer_terms: "Условия использования",
   },
@@ -123,7 +125,7 @@ const translations = {
 
     // Download
     download_title: "HASHARCHI ilovasini yuklab oling",
-    download_sub: "",
+    download_sub: "Eslatib o'tamiz: Ish topish yoki ishchilarni yollash FAQAT ilovada mumkin.",
 
     // About
     about_title: "Biz haqimizda",
@@ -136,6 +138,8 @@ const translations = {
 
     // Footer
     footer_rights: "Barcha huquqlar himoyalangan.",
+    footer_navigation: "Navigatsiya",
+    footer_legal: "Huquqiy ma'lumot",
     footer_policy: "Maxfiylik siyosati",
     footer_terms: "Foydalanish shartlari",
   },
@@ -204,6 +208,8 @@ const translations = {
 
     // Footer
     footer_rights: "Барча ҳуқуқлар ҳимояланган.",
+    footer_navigation: "Навигация",
+    footer_legal: "Ҳуқуқий маълумот",
     footer_policy: "Махфийлик сиёсати",
     footer_terms: "Фойдаланиш шартлари",
   },
