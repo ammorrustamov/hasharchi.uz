@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
-import { SiAppstore } from 'react-icons/si';
+import { SiAppstore, SiGoogleplay } from 'react-icons/si';
 
 const Motion = motion;
 
@@ -94,33 +94,11 @@ export default function Hero() {
             aria-label="Download Hasharchi from Google Play"
             className="group flex items-center gap-3.5 px-7 py-3.5 bg-black/80 hover:bg-black dark:bg-[#102A43] dark:hover:bg-[#163E5F] text-white rounded-xl shadow-xl shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] w-64 justify-center backdrop-blur-sm"
           >
-            {/* Google Play multicolor icon */}
-            <svg
-              className="w-9 h-9 shrink-0 transition-transform duration-300 group-hover:scale-110"
-              viewBox="0 0 48 48"
-              fill="none"
+            {/* Google Play icon */}
+            <SiGoogleplay
+              className="w-9 h-9 shrink-0 text-[#3DDC84] transition-transform duration-300 group-hover:scale-110"
               aria-hidden="true"
-            >
-              <path
-                fill="#00D639"
-                d="M6.3 4.7C5.5 5.5 5 6.8 5 8.5v31c0 1.7.5 3 1.3 3.8L27 24 6.3 4.7z"
-              />
-
-              <path
-                fill="#00A8FF"
-                d="M34.3 31.3 27 24 6.3 43.3c.8.8 2.1.9 3.6.1l24.4-12.1z"
-              />
-
-              <path
-                fill="#FFCE00"
-                d="M41.2 20.7 34.3 17 27 24l7.3 7.3 6.9-3.7c2-1.1 2-5.8 0-6.9z"
-              />
-
-              <path
-                fill="#FF3A44"
-                d="M9.9 4.6c-1.5-.8-2.8-.7-3.6.1L27 24l7.3-7.3L9.9 4.6z"
-              />
-            </svg>
+            />
 
             <div className="text-left">
               <div className="text-[10px] font-medium tracking-wide uppercase opacity-80">
@@ -161,7 +139,6 @@ export default function Hero() {
 
         </Motion.div>
       </div>
-
       {/* Bottom wave */}
       <div className="absolute bottom-0 left-0 right-0">
         <svg

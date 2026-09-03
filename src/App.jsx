@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, BriefcaseBusiness, Check, ChevronDown, Clock3, Download, Globe2, Headphones, Menu, Moon, Search, Send, ShieldCheck, Smartphone, Sun, Users, X, Zap } from 'lucide-react';
+import { SiAppstore, SiGoogleplay, SiYoutube } from 'react-icons/si';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
 import { useLanguage } from './context/LanguageContext';
@@ -21,7 +22,7 @@ const languages = [{ key: 'ru', label: 'RU' }, { key: 'uz_lat', label: 'UZ' }, {
 
 function StoreButton({ href, platform, compact = false }) {
   const isAndroid = platform === 'android';
-  return <a className={`store-button ${compact ? 'store-button-compact' : ''}`} href={href} target="_blank" rel="noreferrer"><span className="store-icon">{isAndroid ? <Download size={compact ? 17 : 20} /> : <Smartphone size={compact ? 17 : 20} />}</span><span><small>{isAndroid ? 'GET IT ON' : 'DOWNLOAD ON THE'}</small><strong>{isAndroid ? 'Google Play' : 'App Store'}</strong></span><ArrowUpRight className="store-arrow" size={compact ? 14 : 16} /></a>;
+  return <a className={`store-button ${compact ? 'store-button-compact' : ''}`} href={href} target="_blank" rel="noreferrer"><span className="store-icon">{isAndroid ? <SiGoogleplay size={compact ? 17 : 20} /> : <SiAppstore size={compact ? 17 : 20} />}</span><span><small>{isAndroid ? 'GET IT ON' : 'DOWNLOAD ON THE'}</small><strong>{isAndroid ? 'Google Play' : 'App Store'}</strong></span><ArrowUpRight className="store-arrow" size={compact ? 14 : 16} /></a>;
 }
 
 function BrandMark() { return <img src="/hasharchi-logo.webp" alt="Hasharchi" className="brand-mark-img" style={{width: '28px', height: '28px', borderRadius: '6px', objectFit: 'contain', display: 'inline-block', verticalAlign: 'middle'}} />; }
@@ -31,9 +32,16 @@ function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const current = languages.find((item) => item.key === language) || languages[0];
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   const goTo = (event, href) => { event.preventDefault(); setOpen(false); document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' }); };
-  return <header className="site-nav"><div className="nav-wrap"><a href="#top" className="brand" onClick={(event) => goTo(event, '#top')}><BrandMark /><span>HASHARCHI</span></a><nav className="desktop-links">{navLinks.map((link) => <a key={link.key} href={link.href} onClick={(event) => goTo(event, link.href)}>{t(link.key)}</a>)}</nav><div className="nav-actions"><div className="language-picker"><button className="icon-text-button" onClick={() => setLanguageOpen(!languageOpen)}><Globe2 size={16} /> {current.label} <ChevronDown size={14} /></button><AnimatePresence>{languageOpen && <Motion.div className="language-menu" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>{languages.map((item) => <button key={item.key} className={item.key === language ? 'selected' : ''} onClick={() => { setLanguage(item.key); setLanguageOpen(false); }}>{item.label}</button>)}</Motion.div>}</AnimatePresence></div><button className="icon-button" onClick={toggleTheme} aria-label="Toggle theme">{theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}</button><a className="nav-cta" href="#download" onClick={(event) => goTo(event, '#download')}>{t('nav_download')} <ArrowUpRight size={16} /></a><button className="mobile-menu-button" onClick={() => setOpen(!open)} aria-label="Toggle menu">{open ? <X /> : <Menu />}</button></div></div><AnimatePresence>{open && <Motion.nav className="mobile-links" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}>{navLinks.map((link) => <a key={link.key} href={link.href} onClick={(event) => goTo(event, link.href)}>{t(link.key)}</a>)}<div className="mobile-language-list">{languages.map((item) => <button key={item.key} className={item.key === language ? 'selected' : ''} onClick={() => { setLanguage(item.key); setOpen(false); }}>{item.label}</button>)}</div><a href="#download" onClick={(event) => goTo(event, '#download')}>{t('nav_download')} <ArrowUpRight size={16} /></a></Motion.nav>}</AnimatePresence></header>;
+  return <header className={`site-nav ${isScrolled ? 'is-scrolled' : ''}`}><div className="nav-wrap"><a href="#top" className="brand" onClick={(event) => goTo(event, '#top')}><BrandMark /><span>HASHARCHI</span></a><nav className="desktop-links">{navLinks.map((link) => <a key={link.key} href={link.href} onClick={(event) => goTo(event, link.href)}>{t(link.key)}</a>)}</nav><div className="nav-actions"><div className="language-picker"><button className="icon-text-button" onClick={() => setLanguageOpen(!languageOpen)}><Globe2 size={16} /> {current.label} <ChevronDown size={14} /></button><AnimatePresence>{languageOpen && <Motion.div className="language-menu" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>{languages.map((item) => <button key={item.key} className={item.key === language ? 'selected' : ''} onClick={() => { setLanguage(item.key); setLanguageOpen(false); }}>{item.label}</button>)}</Motion.div>}</AnimatePresence></div><button className="icon-button" onClick={toggleTheme} aria-label="Toggle theme">{theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}</button><a className="nav-cta" href="#download" onClick={(event) => goTo(event, '#download')}>{t('nav_download')} <ArrowUpRight size={16} /></a><button className="mobile-menu-button" onClick={() => setOpen(!open)} aria-label="Toggle menu">{open ? <X /> : <Menu />}</button></div></div><AnimatePresence>{open && <Motion.nav className="mobile-links" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}>{navLinks.map((link) => <a key={link.key} href={link.href} onClick={(event) => goTo(event, link.href)}>{t(link.key)}</a>)}<div className="mobile-language-list">{languages.map((item) => <button key={item.key} className={item.key === language ? 'selected' : ''} onClick={() => { setLanguage(item.key); setOpen(false); }}>{item.label}</button>)}</div><a href="#download" onClick={(event) => goTo(event, '#download')}>{t('nav_download')} <ArrowUpRight size={16} /></a></Motion.nav>}</AnimatePresence></header>;
 }
 
 function Hero() {
@@ -45,11 +53,23 @@ function Hero() {
         <Motion.div className="hero-copy-new" initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
           <h1>{t('hero_title')}</h1>
           <p>{t('hero_sub')}</p>
-          <div className="hero-proof">
-            <span className="proof-avatars"><i>U</i><i>I</i><i>H</i></span>
-            <span><strong>24/7</strong><small>{t('icon_speed')}</small></span>
-            <span className="proof-divider" />
-            <span><strong>1 app</strong><small>{t('what_title')}</small></span>
+          <div className="hero-proof premium-proof">
+            <div className="proof-status">
+              <span className="proof-live-dot" />
+              <span>HASHARCHI SERVICE</span>
+              <span className="proof-live-label">LIVE</span>
+            </div>
+            <div className="proof-metrics">
+              <div className="proof-metric">
+                <span className="proof-icon"><Clock3 size={15} /></span>
+                <span><strong>24/7</strong><small>{t('icon_speed')}</small></span>
+              </div>
+              <span className="proof-divider" />
+              <div className="proof-metric">
+                <span className="proof-icon"><Smartphone size={15} /></span>
+                <span><strong>1 app</strong><small>{t('only_in_app')}</small></span>
+              </div>
+            </div>
           </div>
         </Motion.div>
         
@@ -127,7 +147,7 @@ function Hero() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
                 <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center shrink-0 group-hover/btn:bg-white/20 transition-colors">
-                  <Download className="text-brand-400 w-6 h-6" />
+                  <SiGoogleplay className="text-white w-6 h-6" />
                 </div>
                 <div className="text-left flex-1">
                   <div className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-0.5">Get it on</div>
@@ -145,7 +165,7 @@ function Hero() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000" />
                 <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center shrink-0 group-hover/btn:bg-white/20 transition-colors">
-                  <Smartphone className="text-white w-6 h-6" />
+                  <SiAppstore className="text-white w-6 h-6" />
                 </div>
                 <div className="text-left flex-1">
                   <div className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-0.5">Download on the</div>
@@ -171,7 +191,7 @@ function Features() {
 function HowItWorks() {
   const { t } = useLanguage();
   const groups = [{ title: t('how_clients'), icon: BriefcaseBusiness, steps: ['step_c1', 'step_c2', 'step_c3'] }, { title: t('how_workers'), icon: Users, steps: ['step_w1', 'step_w2', 'step_w3'] }];
-  return <section id="how-it-works" className="process-new"><div className="process-head"><span className="section-number">02 / 04</span><h2>{t('how_title')}</h2><p>{t('important_text')}</p></div><div className="process-grid">{groups.map((group) => { const GroupIcon = group.icon; return <div className="process-column" key={group.title}><div className="process-title"><span><GroupIcon size={20} /></span><h3>{group.title}</h3></div>{group.steps.map((step, index) => <div className="process-step" key={step}><strong>0{index + 1}</strong><div><p>{t(step)}</p><span>{index === 0 ? 'START HERE' : index === 1 ? 'NEXT STEP' : 'DONE'}</span></div><Check size={17} /></div>)}</div>; })}</div></section>;
+  return <section id="how-it-works" className="process-new"><div className="process-head"><span className="section-number">02 / 04</span><h2>{t('how_title')}</h2><p className="process-notice"><span className="notice-mark">!</span><span>{t('important_text')}</span></p></div><div className="process-grid">{groups.map((group) => { const GroupIcon = group.icon; return <div className="process-column" key={group.title}><div className="process-title"><span><GroupIcon size={20} /></span><h3>{group.title}</h3></div>{group.steps.map((step, index) => <div className="process-step" key={step}><strong>0{index + 1}</strong><div><p>{t(step)}</p><span>{index === 0 ? 'START HERE' : index === 1 ? 'NEXT STEP' : 'DONE'}</span></div><Check size={17} /></div>)}</div>; })}</div></section>;
 }
 
 function WhyHasharchi() {
@@ -239,7 +259,7 @@ function DownloadSection() {
 
 function AboutContact() {
   const { t } = useLanguage();
-  return <section id="about" className="about-new"><div className="about-copy"><span className="section-number">ABOUT HASHARCHI</span><h2>{t('about_title')}</h2><p>{t('about_text')}</p></div><div className="contact-new"><span className="section-number">CONTACT</span><h3>{t('contact_title')}</h3><a href="https://t.me/hasharchiuz" target="_blank" rel="noreferrer"><Send size={18} /> {t('contact_tg_channel')} <ArrowUpRight size={16} /></a><a href="https://t.me/hasharchiadmin" target="_blank" rel="noreferrer"><Headphones size={18} /> {t('contact_support')} <ArrowUpRight size={16} /></a><a href="https://www.instagram.com/hasharchi" target="_blank" rel="noreferrer"><Globe2 size={18} /> Instagram <ArrowUpRight size={16} /></a></div></section>;
+  return <section id="about" className="about-new"><div className="about-copy"><span className="section-number">ABOUT HASHARCHI</span><h2>{t('about_title')}</h2><p>{t('about_text')}</p></div><div className="contact-new"><span className="section-number">CONTACT</span><h3>{t('contact_title')}</h3><a href="https://t.me/hasharchiuz" target="_blank" rel="noreferrer"><Send size={18} /> {t('contact_tg_channel')} <ArrowUpRight size={16} /></a><a href="https://t.me/hasharchiadmin" target="_blank" rel="noreferrer"><Headphones size={18} /> {t('contact_support')} <ArrowUpRight size={16} /></a><a href="https://www.instagram.com/hasharchi" target="_blank" rel="noreferrer"><Globe2 size={18} /> Instagram <ArrowUpRight size={16} /></a><a href="https://www.youtube.com/@hasharchi" target="_blank" rel="noreferrer"><SiYoutube size={18} /> YouTube <ArrowUpRight size={16} /></a></div></section>;
 }
 
 function Footer() {
