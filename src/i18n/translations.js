@@ -1,10 +1,20 @@
 // ═══════════════════════════════════════════════
 // HASHARCHI — Translations (3 languages)
-// All content is 1:1 from the original hasharchi.uz
 // ═══════════════════════════════════════════════
 
 const translations = {
+  // ═══════════════════════════════════════════════
+  // 🇷🇺 RUSSIAN
+  // ═══════════════════════════════════════════════
   ru: {
+    // App
+    only_in_app: "Только в приложении",
+    download_app_now: "Скачайте приложение прямо сейчас",
+    thousands_waiting: "Тысячи людей ждут вас",
+
+    google_play_label: "СКАЧАТЬ В",
+    app_store_label: "ЗАГРУЗИТЬ В",
+
     // Navbar
     nav_features: "О платформе",
     nav_how: "Как работает",
@@ -20,11 +30,13 @@ const translations = {
 
     // Important
     important_title: "ВАЖНО",
-    important_text: "Заказы через сайт НЕ принимаются. Все заказы создаются только через мобильное приложение HASHARCHI.",
+    important_text:
+      "Заказы через сайт НЕ принимаются. Все заказы создаются только через мобильное приложение HASHARCHI.",
 
     // What is Hasharchi
     what_title: "Что такое HASHARCHI?",
-    what_desc: "HASHARCHI — это платформа, которая соединяет заказчиков и рабочих на один день. Вы можете быстро найти людей для работы или получить заказы через мобильное приложение.",
+    what_desc:
+      "HASHARCHI — это платформа, которая соединяет заказчиков и рабочих на один день. Вы можете быстро найти людей для работы или получить заказы через мобильное приложение.",
 
     // Feature cards
     icon_workers: "Рабочие",
@@ -40,6 +52,7 @@ const translations = {
     step_c1: "Скачиваете приложение",
     step_c2: "Создаёте заказ",
     step_c3: "Получаете отклики от рабочих",
+
     how_workers: "Для рабочих",
     step_w1: "Регистрируетесь",
     step_w2: "Пополняете баланс",
@@ -55,11 +68,13 @@ const translations = {
 
     // Download
     download_title: "Скачайте приложение HASHARCHI",
-    download_sub: "Напоминаем: Найти работу или нанять рабочих можно ТОЛЬКО в приложении.",
+    download_sub:
+      "Напоминаем: Найти работу или нанять рабочих можно ТОЛЬКО в приложении.",
 
     // About
     about_title: "О нас",
-    about_text: "HASHARCHI — это современная мобильная платформа, созданная для удобного, безопасного и быстрого поиска рабочих и заказов. Наша цель — сделать рынок дневной работы прозрачным, быстрым и доступным.",
+    about_text:
+      "HASHARCHI — это современная мобильная платформа, созданная для удобного, безопасного и быстрого поиска рабочих и заказов. Наша цель — сделать рынок дневной работы прозрачным, быстрым и доступным.",
 
     // Contact
     contact_title: "Свяжитесь с нами",
@@ -74,7 +89,18 @@ const translations = {
     footer_terms: "Условия использования",
   },
 
+  // ═══════════════════════════════════════════════
+  // 🇺🇿 UZBEK — LATIN
+  // ═══════════════════════════════════════════════
   uz_lat: {
+    // App
+    only_in_app: "Faqat ilovada",
+    download_app_now: "Ilovani hoziroq yuklab oling",
+    thousands_waiting: "Minglab odamlar sizni kutmoqda",
+
+    google_play_label: "GOOGLE PLAY'DAN YUKLAB OLING",
+    app_store_label: "APP STORE'DAN YUKLAB OLING",
+
     // Navbar
     nav_features: "Platforma haqida",
     nav_how: "Qanday ishlaydi",
@@ -90,11 +116,13 @@ const translations = {
 
     // Important
     important_title: "MUHIM",
-    important_text: "Veb-sayt orqali buyurtmalar QABUL QILINMAYDI. Barcha buyurtmalar faqat HASHARCHI mobil ilovasi orqali yaratiladi.",
+    important_text:
+      "Veb-sayt orqali buyurtmalar QABUL QILINMAYDI. Barcha buyurtmalar faqat HASHARCHI mobil ilovasi orqali yaratiladi.",
 
     // What is Hasharchi
     what_title: "HASHARCHI nima?",
-    what_desc: "HASHARCHI — mijozlar va kunlik ishchilarni bog'laydigan platforma. Mobil ilova orqali siz ishlash uchun odamlarni tezda topishingiz yoki buyurtmalar olishingiz mumkin.",
+    what_desc:
+      "HASHARCHI — mijozlar va kunlik ishchilarni bog'laydigan platforma. Mobil ilova orqali siz ishlash uchun odamlarni tezda topishingiz yoki buyurtmalar olishingiz mumkin.",
 
     // Feature cards
     icon_workers: "Ishchilar",
@@ -110,6 +138,7 @@ const translations = {
     step_c1: "Ilovani yuklab olasiz",
     step_c2: "Buyurtma yaratasiz",
     step_c3: "Ishchilardan javoblar olasiz",
+
     how_workers: "Ishchilar uchun",
     step_w1: "Ro'yxatdan o'tasiz",
     step_w2: "Balansni to'ldirasiz",
@@ -125,11 +154,13 @@ const translations = {
 
     // Download
     download_title: "HASHARCHI ilovasini yuklab oling",
-    download_sub: "Eslatib o'tamiz: Ish topish yoki ishchilarni yollash FAQAT ilovada mumkin.",
+    download_sub:
+      "Eslatib o'tamiz: Ish topish yoki ishchilarni yollash FAQAT ilovada mumkin.",
 
     // About
     about_title: "Biz haqimizda",
-    about_text: "HASHARCHI — ishchilar va buyurtmalarni qulay, xavfsiz va tez topish uchun yaratilgan zamonaviy mobil platforma. Maqsadimiz – kunlik ish bozorini shaffof va barcha uchun ochiq qilishdir.",
+    about_text:
+      "HASHARCHI — ishchilar va buyurtmalarni qulay, xavfsiz va tez topish uchun yaratilgan zamonaviy mobil platforma. Maqsadimiz — kunlik ish bozorini shaffof va barcha uchun ochiq qilishdir.",
 
     // Contact
     contact_title: "Biz bilan bog'lanish",
@@ -144,7 +175,18 @@ const translations = {
     footer_terms: "Foydalanish shartlari",
   },
 
+  // ═══════════════════════════════════════════════
+  // 🇺🇿 UZBEK — CYRILLIC
+  // ═══════════════════════════════════════════════
   uz_cyr: {
+    // App
+    only_in_app: "Фақат илова орқали",
+    download_app_now: "Иловани ҳозироқ юклаб олинг",
+    thousands_waiting: "Минглаб одамлар сизни кутмоқда",
+
+    google_play_label: "GOOGLE PLAY'ДАН ЮКЛАБ ОЛИНГ",
+    app_store_label: "APP STORE'ДАН ЮКЛАБ ОЛИНГ",
+
     // Navbar
     nav_features: "Платформа ҳақида",
     nav_how: "Қандай ишлайди",
@@ -160,11 +202,13 @@ const translations = {
 
     // Important
     important_title: "МУҲИМ",
-    important_text: "Веб-сайт орқали буюртмалар ҚАБУЛ ҚИЛИНМАЙДИ. Барча буюртмалар фақат HASHARCHI мобил иловаси орқали яратилади.",
+    important_text:
+      "Веб-сайт орқали буюртмалар ҚАБУЛ ҚИЛИНМАЙДИ. Барча буюртмалар фақат HASHARCHI мобил иловаси орқали яратилади.",
 
     // What is Hasharchi
     what_title: "HASHARCHI нима?",
-    what_desc: "HASHARCHI — мижозлар ва кунлик ишчиларни боғлайдиган платформа. Мобил илова орқали сиз ишлаш учун одамларни тезда топишингиз ёки буюртмалар олишингиз мумкин.",
+    what_desc:
+      "HASHARCHI — мижозлар ва кунлик ишчиларни боғлайдиган платформа. Мобил илова орқали сиз ишлаш учун одамларни тезда топишингиз ёки буюртмалар олишингиз мумкин.",
 
     // Feature cards
     icon_workers: "Ишчилар",
@@ -180,6 +224,7 @@ const translations = {
     step_c1: "Иловани юклаб оласиз",
     step_c2: "Буюртма яратасиз",
     step_c3: "Ишчилардан жавоблар оласиз",
+
     how_workers: "Ишчилар учун",
     step_w1: "Рўйхатдан ўтасиз",
     step_w2: "Балансни тўлдирасиз",
@@ -195,11 +240,13 @@ const translations = {
 
     // Download
     download_title: "HASHARCHI иловасини юклаб олинг",
-    download_sub: "Эслатиб ўтамиз: Иш топиш ёки ишчиларни ёллаш ФАҚАТ иловада мумкин.",
+    download_sub:
+      "Эслатиб ўтамиз: Иш топиш ёки ишчиларни ёллаш ФАҚАТ иловада мумкин.",
 
     // About
     about_title: "Биз ҳақимизда",
-    about_text: "HASHARCHI — ишчилар ва буюртмаларни қулай, хавфсиз ва тез топиш учун яратилган замонавий мобил платформа. Мақсадимиз – кунлик иш бозорини шаффоф ва барча учун очиқ қилишдир.",
+    about_text:
+      "HASHARCHI — ишчилар ва буюртмаларни қулай, хавфсиз ва тез топиш учун яратилган замонавий мобил платформа. Мақсадимиз — кунлик иш бозорини шаффоф ва барча учун очиқ қилишдир.",
 
     // Contact
     contact_title: "Биз билан боғланиш",

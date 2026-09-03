@@ -71,6 +71,7 @@ export default function Navbar() {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
+            
             className="group flex items-center gap-2.5 text-xl md:text-2xl font-extrabold tracking-tight text-[#0EA5E9] hover:text-[#0284C7] transition-colors nav-logo"
           >
             <img

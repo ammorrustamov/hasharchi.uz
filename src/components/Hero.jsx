@@ -1,10 +1,14 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import { SiAppstore } from 'react-icons/si';
 
 const Motion = motion;
 
-const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=uz.developer.hasharchi';
-const APP_STORE_URL = 'https://apps.apple.com/uz/app/hasharchi/id6755495405';
+const GOOGLE_PLAY_URL =
+  'https://play.google.com/store/apps/details?id=uz.developer.hasharchi';
+
+const APP_STORE_URL =
+  'https://apps.apple.com/uz/app/hasharchi/id6755495405';
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -21,6 +25,8 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-16 md:py-24">
+
+        {/* Title */}
         <Motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -30,6 +36,7 @@ export default function Hero() {
           {t('hero_title')}
         </Motion.h1>
 
+        {/* Subtitle */}
         <Motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -51,6 +58,26 @@ export default function Hero() {
           </span>
         </Motion.div>
 
+        {/* App information */}
+        <Motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.6 }}
+          className="mt-8"
+        >
+          <p className="text-sm sm:text-base text-white/80 font-medium">
+            {t('only_in_app')}
+          </p>
+
+          <p className="mt-2 text-xl sm:text-2xl font-bold text-white">
+            {t('download_app_now')}
+          </p>
+
+          <p className="mt-2 text-sm sm:text-base text-white/70">
+            {t('thousands_waiting')}
+          </p>
+        </Motion.div>
+
         {/* Store buttons */}
         <Motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -58,42 +85,96 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.7 }}
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
+
+          {/* Google Play */}
           <a
-            href={"https://play.google.com/store/apps/details?id=uz.developer.hasharchi"}
+            href={GOOGLE_PLAY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3.5 px-7 py-3.5 bg-black/80 hover:bg-black dark:bg-[#102A43] dark:hover:bg-[#163E5F] text-white rounded-xl shadow-xl shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transition-all hover:scale-[1.03] active:scale-[0.98] w-64 justify-center backdrop-blur-sm"
+            aria-label="Download Hasharchi from Google Play"
+            className="group flex items-center gap-3.5 px-7 py-3.5 bg-black/80 hover:bg-black dark:bg-[#102A43] dark:hover:bg-[#163E5F] text-white rounded-xl shadow-xl shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] w-64 justify-center backdrop-blur-sm"
           >
-            <svg className="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 0 1 0 1.38l-2.302 2.302L15.12 12l2.578-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/>
+            {/* Google Play multicolor icon */}
+            <svg
+              className="w-9 h-9 shrink-0 transition-transform duration-300 group-hover:scale-110"
+              viewBox="0 0 48 48"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                fill="#00D639"
+                d="M6.3 4.7C5.5 5.5 5 6.8 5 8.5v31c0 1.7.5 3 1.3 3.8L27 24 6.3 4.7z"
+              />
+
+              <path
+                fill="#00A8FF"
+                d="M34.3 31.3 27 24 6.3 43.3c.8.8 2.1.9 3.6.1l24.4-12.1z"
+              />
+
+              <path
+                fill="#FFCE00"
+                d="M41.2 20.7 34.3 17 27 24l7.3 7.3 6.9-3.7c2-1.1 2-5.8 0-6.9z"
+              />
+
+              <path
+                fill="#FF3A44"
+                d="M9.9 4.6c-1.5-.8-2.8-.7-3.6.1L27 24l7.3-7.3L9.9 4.6z"
+              />
             </svg>
+
             <div className="text-left">
-              <div className="text-[10px] font-medium tracking-wide uppercase opacity-80">GET IT ON</div>
-              <div className="text-lg font-bold leading-tight -mt-0.5">Google Play</div>
+              <div className="text-[10px] font-medium tracking-wide uppercase opacity-80">
+                {t('google_play_label')}
+              </div>
+
+              <div className="text-lg font-bold leading-tight -mt-0.5">
+                Google Play
+              </div>
             </div>
           </a>
 
+          {/* App Store */}
           <a
-            href={"https://apps.apple.com/uz/app/hasharchi/id6755495405"}
+            href={APP_STORE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3.5 px-7 py-3.5 bg-black/80 hover:bg-black dark:bg-[#102A43] dark:hover:bg-[#163E5F] text-white rounded-xl shadow-xl shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transition-all hover:scale-[1.03] active:scale-[0.98] w-64 justify-center backdrop-blur-sm"
+            aria-label="Download Hasharchi from App Store"
+            className="group flex items-center gap-3.5 px-7 py-3.5 bg-black/80 hover:bg-black dark:bg-[#102A43] dark:hover:bg-[#163E5F] text-white rounded-xl shadow-xl shadow-black/20 hover:shadow-2xl hover:shadow-black/30 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] w-64 justify-center backdrop-blur-sm"
           >
-            <svg className="w-7 h-7 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-            </svg>
+            {/* App Store icon */}
+            <SiAppstore
+              className="w-9 h-9 shrink-0 transition-transform duration-300 group-hover:scale-110"
+              color="#ffffff"
+              aria-hidden="true"
+            />
+
             <div className="text-left">
-              <div className="text-[10px] font-medium tracking-wide uppercase opacity-80">Download on the</div>
-              <div className="text-lg font-bold leading-tight -mt-0.5">App Store</div>
+              <div className="text-[10px] font-medium tracking-wide uppercase opacity-80">
+                {t('app_store_label')}
+              </div>
+
+              <div className="text-lg font-bold leading-tight -mt-0.5">
+                App Store
+              </div>
             </div>
           </a>
+
         </Motion.div>
       </div>
 
       {/* Bottom wave */}
       <div className="absolute bottom-0 left-0 right-0">
-        <svg className="w-full h-12 md:h-20" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="none">
-          <path d="M0 60V30C240 0 480 0 720 30C960 60 1200 60 1440 30V60H0Z" className="fill-white dark:fill-[#071827]" />
+        <svg
+          className="w-full h-12 md:h-20"
+          viewBox="0 0 1440 60"
+          preserveAspectRatio="none"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M0 60V30C240 0 480 0 720 30C960 60 1200 60 1440 30V60H0Z"
+            className="fill-white dark:fill-[#071827]"
+          />
         </svg>
       </div>
     </section>
