@@ -63,7 +63,7 @@ export default function Navbar() {
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 nav-inner">
         <div className="flex items-center justify-between h-16 md:h-20">
           <a
             href="#"
@@ -71,7 +71,7 @@ export default function Navbar() {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="group flex items-center gap-2.5 text-xl md:text-2xl font-extrabold tracking-tight text-[#0EA5E9] hover:text-[#0284C7] transition-colors"
+            className="group flex items-center gap-2.5 text-xl md:text-2xl font-extrabold tracking-tight text-[#0EA5E9] hover:text-[#0284C7] transition-colors nav-logo"
           >
             <img
               src="https://play-lh.googleusercontent.com/oWFG4w2K4BU7EXdA1kZ_RKrD4zCo7vIgkdS1u5PgMISw5vCubK6ygdOb-uAfyre-BBKHGxBLAKt5zra5MR2h7IE=w480-h960-rw"
